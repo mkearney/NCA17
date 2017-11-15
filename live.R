@@ -9,7 +9,7 @@ library(ggplot2)
 if (!requireNamespace("gridExtra", quietly = TRUE)) install.packages("gridExtra")
 
 ## table output function
-tab_sort <- function (x, n = 10) {
+tab_sort <- function (x, n = 10, mentions = FALSE) {
   sumrow <- data.frame(
     "screen_name" = paste(length(unique(x)), "users"),
     "n_tweets" = length(x),
@@ -27,6 +27,9 @@ tab_sort <- function (x, n = 10) {
   x <- head(x, n)
   x <- rbind(x, sumrow)
   row.names(x) <- c(seq_len(nrow(x) - 1L), "total")
+  if (mentions) {
+    names(x)[2:3] <- c("n_mentions", "prop_mentions")
+  }
   x
 }
 
@@ -69,15 +72,15 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
 
   ## most frequent tweeters table
   usrs <- tab_sort(nca$screen_name)
-  png("nca17-usrs.png", height = 3.75, width = 6, "in", res = 300)
+  png("nca17-usrs.png", height = 3.75, width = 5, "in", res = 300)
   par(bg = "white")
   gridExtra::grid.table(usrs, theme = gridExtra::ttheme_default(base_size = 9))
   dev.off()
 
   ## most frequent mentions table
   naomit <- function(x) x[!is.na(x)]
-  usrs <- tab_sort(naomit(unlist(nca$mentions_screen_name)))
-  png("nca17-ats.png", height = 3.75, width = 6, "in", res = 300)
+  usrs <- tab_sort(naomit(unlist(nca$mentions_screen_name)), mentions = TRUE)
+  png("nca17-ats.png", height = 3.75, width = 5.1, "in", res = 300)
   par(bg = "white")
   gridExtra::grid.table(usrs, theme = gridExtra::ttheme_default(base_size = 9))
   dev.off()
