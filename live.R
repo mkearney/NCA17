@@ -69,7 +69,7 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
 
   ## most frequent tweeters table
   usrs <- tab_sort(nca$screen_name)
-  png("nca17-usrs.png", height = 4, width = 7, "in", res = 300)
+  png("nca17-usrs.png", height = 4, width = 6, "in", res = 300)
   par(bg = "white")
   gridExtra::grid.table(usrs, theme = gridExtra::ttheme_default(base_size = 9))
   dev.off()
