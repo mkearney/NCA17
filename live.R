@@ -59,7 +59,7 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
   nca <- parse_stream("data/nca17.json")
 
   ## plot the time series of #NCA17 activity
-  ts_plot(nca, "3 mins") +
+  ts_plot(nca, "hours") +
     theme_minimal(base_family = "sans") +
     theme(plot.title = element_text(face = "bold")) +
     labs(x = NULL, y = NULL, title = "Time series of #NCA17 Twitter statuses",
