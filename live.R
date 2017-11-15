@@ -64,7 +64,7 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
     theme(plot.title = element_text(face = "bold")) +
     labs(x = NULL, y = NULL, title = "Time series of #NCA17 Twitter statuses",
          subtitle = "Twitter statuses aggregated by hour",
-         caption = "nData collected from Twitter's stream (filter) API using rtweet") +
+         caption = "\nData collected from Twitter's stream (filter) API using rtweet") +
     ggsave("nca17-ts.png", width = 8, height = 6, units = "in")
 
   ## most frequent tweeters table
