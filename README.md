@@ -13,10 +13,16 @@ The number of #nca17 tweets aggregated in 1-hour intervals.
 
 ![](nca17-ts.png)
 
-### Top users
-Most frequently appearing Twitter accounts.
+### Top tweeters
+Accounts that have posted the most statuses.
 
 ![](nca17-usrs.png)
+
+### Top mentions
+Accounts most frequently mentioned.
+
+![](nca17-ats.png)
+
 
 ### Word cloud
 Most popular words appearing in statuses (stop words excluded)

@@ -74,6 +74,14 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
   gridExtra::grid.table(usrs, theme = gridExtra::ttheme_default(base_size = 9))
   dev.off()
 
+  ## most frequent mentions table
+  naomit <- function(x) x[!is.na(x)]
+  usrs <- tab_sort(naomit(unlist(nca$mentions_screen_name)))
+  png("nca17-ats.png", height = 4, width = 6, "in", res = 300)
+  par(bg = "white")
+  gridExtra::grid.table(usrs, theme = gridExtra::ttheme_default(base_size = 9))
+  dev.off()
+
   ## create frequency table for popular words
   wds <- clean_text_table(nca)
   minfreq <- quantile(as.double(wds), .75)
