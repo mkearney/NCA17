@@ -80,7 +80,7 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
   ## most frequent mentions table
   naomit <- function(x) x[!is.na(x)]
   usrs <- tab_sort(naomit(unlist(nca$mentions_screen_name)), mentions = TRUE)
-  png("nca17-ats.png", height = 3.1, width = 4.26, "in", res = 300)
+  png("nca17-ats.png", height = 3.1, width = 4.25, "in", res = 300)
   par(bg = "white")
   gridExtra::grid.table(usrs, theme = gridExtra::ttheme_default(base_size = 9))
   dev.off()
