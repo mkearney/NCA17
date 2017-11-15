@@ -11,9 +11,9 @@ if (!requireNamespace("gridExtra", quietly = TRUE)) install.packages("gridExtra"
 ## table output function
 tab_sort <- function (x, n = 10) {
   sumrow <- data.frame(
-    "screen_name" = c("...", paste(length(unique(x)), "total users")),
-    "n_tweets" = c(NA_integer_, length(x)),
-    "prop_tweets" = c(NA_real_, 1.000),
+    "screen_name" = paste(length(unique(x)), "users"),
+    "n_tweets" = length(x),
+    "prop_tweets" = 1.000,
     stringsAsFactors = FALSE
   )
   x <- sort(table(x), decreasing = TRUE)
@@ -26,7 +26,7 @@ tab_sort <- function (x, n = 10) {
   x$prop_tweets <- round(x$prop_tweets, 3)
   x <- head(x, n)
   x <- rbind(x, sumrow)
-  row.names(x) <- c(seq_len(nrow(x) - 2L), "...", "tot")
+  row.names(x) <- c(seq_len(nrow(x) - 1L), "total")
   x
 }
 
@@ -63,25 +63,26 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
     theme_minimal(base_family = "sans") +
     theme(plot.title = element_text(face = "bold")) +
     labs(x = NULL, y = NULL, title = "Time series of #NCA17 Twitter statuses",
-         subtitle = "Twitter statuses aggregated by minute",
-         caption = "\nData collected from Twitter's stream (filter) API using rtweet") +
+         subtitle = "Twitter statuses aggregated by hour",
+         caption = "nData collected from Twitter's stream (filter) API using rtweet") +
     ggsave("nca17-ts.png", width = 8, height = 6, units = "in")
 
   ## most frequent tweeters table
   usrs <- tab_sort(nca$screen_name)
   png("nca17-usrs.png", height = 4, width = 4, "in", res = 300)
-  gridExtra::grid.table(usrs)
+  gridExtra::grid.table(usrs, theme = gridExtra::ttheme_default(base_size = 9))
   dev.off()
 
   ## create frequency table for popular words
   wds <- clean_text_table(nca)
+  minfreq <- quantile(as.double(wds), .75)
 
   png("nca17-wc.png", height = 8, width = 8, "in", res = 300)
   par(bg = "black")
   wordcloud::wordcloud(
     names(wds),
     as.integer(wds),
-    min.freq = 2,
+    min.freq = minfreq,
     random.color = FALSE,
     random.order = FALSE,
     colors = gg_cols(6)

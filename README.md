@@ -16,6 +16,8 @@ The number of #nca17 tweets aggregated in 1-hour intervals.
 ### Top users
 Most frequently appearing Twitter accounts.
 
+<img height="900" width="900" src="nca17-usrs.png" />
+
 ![](nca17-usrs.png)
 
 ### Word cloud
