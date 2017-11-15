@@ -89,6 +89,7 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
   dev.off()
 
   ## update git repo (this is from my own utils R package)
+  tfse::rm_.DS_Store()
   tfse::add_to_git(paste("live update number", i), interactive = FALSE)
   i <- i + 1L
 
