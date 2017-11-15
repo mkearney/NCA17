@@ -89,8 +89,7 @@ while (Sys.time() < as.POSIXct("2017-11-21")) {
   dev.off()
 
   ## update git repo (this is from my own utils R package)
-  tfse::add_to_git(paste("live update number", i))
-  1L
+  tfse::add_to_git(paste("live update number", i), interactive = FALSE)
   i <- i + 1L
 
   ## sleep for hour
