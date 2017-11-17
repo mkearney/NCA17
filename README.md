@@ -23,6 +23,10 @@ Accounts most frequently mentioned.
 
 ![](nca17-ats.png)
 
+### Sentiment analysis
+Sentiment (positive/negative) of statuses over time.
+
+![](nca17-sa.png)
 
 ### Word cloud
 Most popular words appearing in statuses (stop words excluded)
