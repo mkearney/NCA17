@@ -28,6 +28,11 @@ Sentiment (positive/negative) of statuses over time.
 
 ![](nca17-sa.png)
 
+### Network analysis
+Semantic (quotes, retweets, and mentions) network connections.
+
+![](nca17-network.png)
+
 ### Word cloud
 Most popular words appearing in statuses (stop words excluded)
 
