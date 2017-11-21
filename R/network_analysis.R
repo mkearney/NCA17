@@ -5,7 +5,7 @@ library(rtweet)
 library(igraph)
 
 ## Read in the streamed data
-d <- parse_stream("data/stream-1.json")
+d <- parse_stream("data/stream.json")
 
 ## function to filter out missing and non-unique IDs
 uq_naomit <- function(x) unique(x[!is.na(x)])

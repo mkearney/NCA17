@@ -5,7 +5,7 @@ library(rtweet)
 lib(tidyverse)
 
 ## Read in the streamed data
-d <- parse_stream("data/stream-1.json")
+d <- parse_stream("data/stream.json")
 
 ## Estimate pos/neg sentiment for each tweet
 d$sentiment <- syuzhet::get_sentiment(d$text, "syuzhet")

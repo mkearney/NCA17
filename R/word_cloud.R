@@ -5,7 +5,7 @@ library(rtweet)
 library(ggplot2)
 
 ## Read in the streamed data
-d <- parse_stream("data/stream-1.json")
+d <- parse_stream("data/stream.json")
 
 ## function for cleaning text and creating word freq table
 clean_text_table <- function(data) {

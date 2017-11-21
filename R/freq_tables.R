@@ -5,7 +5,7 @@ library(rtweet)
 library(ggplot2)
 
 ## Read in the streamed data
-d <- parse_stream("data/stream-1.json")
+d <- parse_stream("data/stream.json")
 
 ## function to create freq table
 tab_sort <- function (x, n = 10, mentions = FALSE) {
